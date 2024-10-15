@@ -1,4 +1,4 @@
-package com.pismo.demo.model;
+package com.pismo.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

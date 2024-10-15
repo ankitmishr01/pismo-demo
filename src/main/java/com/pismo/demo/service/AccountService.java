@@ -1,12 +1,11 @@
 package com.pismo.demo.service;
 
-import com.pismo.demo.model.Account;
-import org.springframework.stereotype.Service;
+import com.pismo.demo.model.AccountModel;
 
 
 public interface AccountService {
 
-    Account getAcccountDetails(Long accountId);
+    AccountModel getAcccountDetails(Long accountId);
 
-    Account saveAccountDetails(Account account);
+    AccountModel saveAccountDetails(AccountModel account);
 }

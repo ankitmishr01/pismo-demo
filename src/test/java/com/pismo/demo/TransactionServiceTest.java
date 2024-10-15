@@ -1,8 +1,9 @@
 package com.pismo.demo;
 
-import com.pismo.demo.model.Account;
-import com.pismo.demo.model.AccountType;
-import com.pismo.demo.model.Transaction;
+import com.pismo.demo.entity.Account;
+import com.pismo.demo.entity.AccountType;
+import com.pismo.demo.entity.Transaction;
+import com.pismo.demo.model.TransactionModel;
 import com.pismo.demo.repository.TransactionRepository;
 import com.pismo.demo.service.TransactionService;
 import org.junit.jupiter.api.BeforeEach;
@@ -55,8 +56,14 @@ class TransactionServiceTest {
         // Arrange: Mock repository behavior
         when(transactionRepository.save(any(Transaction.class))).thenReturn(testTransaction);
 
+        TransactionModel savedTransaction = new TransactionModel();
+        savedTransaction.setAccount(testTransaction.getAccount().getAccountId());
+        savedTransaction.setAccount(testTransaction.getAccount().getAccountId());
+        savedTransaction.setOperationType(testTransaction.getOperationType().getTypeId());
+        savedTransaction.setTransactionId(testTransaction.getTransactionId());
+
         // Act: Call the service method
-        Transaction savedTransaction = transactionService.saveTransaction(testTransaction);
+        savedTransaction = transactionService.saveTransaction(savedTransaction);
 
         // Assert: Verify the result
         assertNotNull(savedTransaction);

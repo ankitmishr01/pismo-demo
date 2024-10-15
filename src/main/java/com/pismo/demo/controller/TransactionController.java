@@ -1,6 +1,6 @@
 package com.pismo.demo.controller;
 
-import com.pismo.demo.model.Transaction;
+import com.pismo.demo.model.TransactionModel;
 import com.pismo.demo.service.TransactionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class TransactionController {
     private TransactionService transactionService;
 
     @PostMapping("/transactions")
-    public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
+    public ResponseEntity<TransactionModel> createTransaction(@RequestBody TransactionModel transaction) {
         log.info("Creating transaction: {}", transaction);
         return ResponseEntity.ok(transactionService.saveTransaction(transaction));
     }

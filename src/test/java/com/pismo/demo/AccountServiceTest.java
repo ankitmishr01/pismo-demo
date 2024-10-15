@@ -1,8 +1,9 @@
 package com.pismo.demo;
 
 import com.pismo.demo.exception.CustomException;
-import com.pismo.demo.model.Account;
-import com.pismo.demo.model.AccountType;
+import com.pismo.demo.entity.Account;
+import com.pismo.demo.entity.AccountType;
+import com.pismo.demo.model.AccountModel;
 import com.pismo.demo.repository.AccountRepository;
 import com.pismo.demo.service.AccountService;
 import org.junit.jupiter.api.BeforeEach;
@@ -48,9 +49,13 @@ class AccountServiceTest {
     void testCreateAccount_Success() {
         // Arrange: Mock repository behavior
         when(accountRepository.save(any(Account.class))).thenReturn(testAccount);
-
+//
         // Act: Call the service method
-        Account savedAccount = accountService.saveAccountDetails(testAccount);
+        AccountModel savedAccount = new AccountModel();
+        savedAccount.setAccountId(testAccount.getAccountId());
+        savedAccount.setDocumentNumber(testAccount.getDocumentNumber());
+
+        savedAccount = accountService.saveAccountDetails(savedAccount);
 
         // Assert: Verify the result
         assertNotNull(savedAccount);

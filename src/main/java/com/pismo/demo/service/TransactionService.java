@@ -1,10 +1,9 @@
 package com.pismo.demo.service;
 
-import com.pismo.demo.model.Transaction;
-import org.springframework.stereotype.Service;
+import com.pismo.demo.model.TransactionModel;
 
 
 public interface TransactionService {
 
-    Transaction saveTransaction(Transaction transaction);
+    TransactionModel saveTransaction(TransactionModel transaction);
 }

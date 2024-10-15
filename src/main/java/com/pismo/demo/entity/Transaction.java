@@ -1,14 +1,16 @@
-package com.pismo.demo.model;
+package com.pismo.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Data;
 import jakarta.validation.constraints.DecimalMin;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
 @Entity
 @Table(name = "transactions")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

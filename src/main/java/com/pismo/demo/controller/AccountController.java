@@ -1,9 +1,7 @@
 package com.pismo.demo.controller;
 
-import com.pismo.demo.model.Account;
-import com.pismo.demo.model.Transaction;
+import com.pismo.demo.model.AccountModel;
 import com.pismo.demo.service.AccountService;
-import com.pismo.demo.service.TransactionService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +18,14 @@ public class AccountController {
     private AccountService accountService;
 
     @PostMapping("/accounts")
-    public ResponseEntity<Account> createAccount(@Valid @RequestBody Account account) {
-        Account savedAccount = accountService.saveAccountDetails(account);
+    public ResponseEntity<AccountModel> createAccount(@Valid @RequestBody AccountModel account) {
+        AccountModel savedAccount = accountService.saveAccountDetails(account);
         return new ResponseEntity<>(savedAccount, HttpStatus.CREATED);
     }
 
     @GetMapping("/accounts/{accountId}")
-    public ResponseEntity<Account> getAccount(@PathVariable Long accountId) {
-        Account account = accountService.getAcccountDetails(accountId);
+    public ResponseEntity<AccountModel> getAccount(@PathVariable Long accountId) {
+        AccountModel account = accountService.getAcccountDetails(accountId);
         return ResponseEntity.ok(account);
     }
 }
